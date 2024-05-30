@@ -1,14 +1,19 @@
-const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const isPrime = (number) => {
+  if (number <= 1) {
+    return false;
+  }
+  for (let i = 2; i <= Math.sqrt(number); i += 1) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+  return true;
+};
 
 const task = () => {
   const num = Math.round(Math.random() * 50);
-
-  for (let i = 2; i <= Math.sqrt(num); i += 1) {
-    if (num % i === 0) {
-      return [num, 'no'];
-    }
-  }
-  return [num, 'yes'];
+  const an = isPrime(num) ? 'yes' : 'no';
+  return [num, an];
 };
 
-export { description, task };
+export default task;
